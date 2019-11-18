@@ -2,8 +2,12 @@
 
 Un simple Garbage Collector en C...
 
+
+
 La fonction `gc_get_ptr_list()` permet d'éviter une variable globale..
+
 La fonction `gc_alloc_ptr_list` permet de malloc un pointeur à la taille désiré (avec un petit bonus), explication:
+
 Imaginons que je souhaite  alloc un char * pour 5 caractères (mot "test\0")
 ```
 |
