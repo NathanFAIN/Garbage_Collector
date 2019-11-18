@@ -77,3 +77,8 @@ Explication imagée:
                              ↑
                              Adresse donné à l'utilisateur (189 + 8)
 ```
+## Sources
+
+[gcc-attibutes]: https://gcc.gnu.org/onlinedocs/gcc/Common-Function-Attributes.html#Common-Function-Attributes
+
+* **[GCC Attibutes][gcc-attibutes]**
