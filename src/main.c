@@ -10,6 +10,9 @@
 int main(void)
 {
     void *ptr = MALLOC(sizeof(void *));
+    ptr = MALLOC(sizeof(void *));
+    ptr = MALLOC(sizeof(void *));
 
+    (void) ptr;
     return (0);
 }
