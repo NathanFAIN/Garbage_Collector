@@ -19,7 +19,7 @@ CC = gcc
 RM	=	rm -f
 
 CFLAGS = -I ./include/
-CFLAGS += -W -Wall -Wextra -Werror
+CFLAGS += -W -Wall -Wextra
 
 all: $(NAME)
 
