@@ -27,10 +27,14 @@ Et bien, en réalité je vais alloc `5 + sizeof(void *)`, pour avoir cela:
 Les 8 premiers octets me servirons à stocker la prochaine adresse que j'alloc avec la même fonction -> liste chainée!
 
 Puis, comme on peut le deviner la fonction `gc_destroy_ptr_list()` pour deruire tout les pointeurs stocké dans la "liste chainé".. Avec la particularité d'avoir l'attribut `__attribute__ ((destructor))` qui permet d'appeler la fonction de façon automatique lors de la fermeture du programme (exit ou return), plutot partique pour un GC automatique!
+```
+
+
 
 
 ```
-
+Explication imagée:
+```
 
 
 
