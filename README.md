@@ -77,8 +77,10 @@ Explication imagée:
                              ↑
                              Adresse donné à l'utilisateur (189 + 8)
 ```
-## Sources
+## Sources:
 
 [gcc-attibutes]: https://gcc.gnu.org/onlinedocs/gcc/Common-Function-Attributes.html#Common-Function-Attributes
+[gcc-garbage-collector]: https://en.wikipedia.org/wiki/Garbage_collection_(computer_science)
 
 * **[GCC Attibutes][gcc-attibutes]**
+* **[GCC Garbage Collector][gcc-garbage-collector]**
