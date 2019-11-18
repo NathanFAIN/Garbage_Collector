@@ -2,7 +2,7 @@
 ** EPITECH PROJECT, 2019
 ** main.c
 ** File description:
-** main for test GC
+** test GC main
 */
 
 #include "garbage_collector.h"
