@@ -1,14 +1,13 @@
 # C-Garbage Collector
 
-Un simple Garbage Collector en C...
+A simple Garbage Collector in C ...
 
 
+The function `gc_get_ptr_list()` avoids a global variable...
 
-La fonction `gc_get_ptr_list()` permet d'éviter une variable globale..
+The function `gc_alloc_ptr_list` avoids to alloc the pointer with the desired size + `sizeof(void *)`, explanation:
 
-La fonction `gc_alloc_ptr_list` permet de malloc un pointeur à la taille désiré (avec un petit bonus), explication:
-
-Imaginons que je souhaite  alloc un char * pour 5 caractères (mot "test\0")
+Let's say I want to allocate a char * for 5 characters (word "test\0")
 ```
 |
 +-+-+-+-+-+
@@ -16,9 +15,9 @@ Imaginons que je souhaite  alloc un char * pour 5 caractères (mot "test\0")
 +-+-+-+-+-+
 |
 ```
-Et bien, en réalité je vais alloc `5 + sizeof(void *)`, pour avoir cela:
+Well, in reality I'm going to allocate `5 + sizeof (void *)`, to get that:
 ```
-                 Variable alloué pour l'utilisateur
+                 Memory allocated for user
                  |
                  |
                 |↓
@@ -28,24 +27,24 @@ Et bien, en réalité je vais alloc `5 + sizeof(void *)`, pour avoir cela:
  ↑              |
  |
  |
- Adresse du prochain pointeur
-```
-Les 8 premiers octets me servirons à stocker la prochaine adresse que j'alloc avec la même fonction -> liste chainée!
-
-Puis, comme on peut le deviner la fonction `gc_destroy_ptr_list()` pour deruire tout les pointeurs stocké dans la "liste chainé".. Avec la particularité d'avoir l'attribut `__attribute__ ((destructor))` qui permet d'appeler la fonction de façon automatique lors de la fermeture du programme (exit ou return), plutot partique pour un GC automatique!
-```
-
-
-
+ Next pointer address
 
 ```
-Explication imagée:
+The first 8 bytes will be used to store the next allocated address I assign with the same function -> linked list!
+
+With the particularity of having the attributes `__attribute__ ((destructor))` causes the function to be called automatically after execution enters `main()`. All stored pointers in the list are `free` at the end of the program.
+
+
+
+
+
+Graphically explanation:
 ```
 
 
 
-                    Mémoire alloué en plus par le GC pour stocker l'adresse de la prochaine allocation
-                    |            Mémoire alloué demandé par l'utilisateur
+                    Memory allocated in addition by the GC to store the address of the next allocation
+                    |            Allocated memory requested by the user
                     |            |
              +-------------+ +-------+
              |             | |       |
@@ -53,10 +52,10 @@ Explication imagée:
     42      |0|0|0|0|0|0|0|0|T|E|S|T|█|
             +-+-+-+-+-+-+-+-+-+-+-+-+-+
             ↑                ↑
-            |                Adresse donné à l'utilisateur (42 + 8)
+            |                Address given to the user (42 + 8)
             |
-            |       Mémoire alloué en plus par le GC pour stocker l'adresse de la prochaine allocation
-            |       |           Mémoire alloué demandé par l'utilisateur
+            |       Memory allocated in addition by the GC to store the address of the next allocation
+            |       |           Allocated memory requested by the user
             |       |           |
             |+-------------+ +-----+
             ||             | |     |
@@ -64,10 +63,10 @@ Explication imagée:
     113     |4|2|0|0|0|0|0|0|O|U|I|█|
             +-+-+-+-+-+-+-+-+-+-+-+-+
             ↑                ↑
-            |                Adresse donné à l'utilisateur (113 + 8)
+            |                Address given to the user (113 + 8)
             |
-            |       Mémoire alloué en plus par le GC pour stocker l'adresse de la prochaine allocation
-            |       |                 Mémoire alloué demandé par l'utilisateur
+            |       Memory allocated in addition by the GC to store the address of the next allocation
+            |       |                 Allocated memory requested by the user
             |       |                 |
             |+-------------+ +---------------+
             ||             | |               |
@@ -75,7 +74,7 @@ Explication imagée:
     189     |1|1|3|0|0|0|0|0|T|O|T|O|T|A|T|A|█|
             +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
                              ↑
-                             Adresse donné à l'utilisateur (189 + 8)
+                             Address given to the user (189 + 8)
 ```
 ## Sources:
 
