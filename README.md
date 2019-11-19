@@ -43,11 +43,15 @@ Graphically explanation:
 
 
 
-                    Memory allocated in addition by the GC to store the address of the next allocation
-                    |            Allocated memory requested by the user
-                    |            |
-             +-------------+ +-------+
-             |             | |       |
+    0       The first allocation points to nothing (NULL / 0)
+            ↑
+            |
+            |
+            |       Memory allocated in addition by the GC to store the address of the next allocation
+            |       |            Allocated memory requested by the user
+            |       |            |
+            |+-------------+ +-------+
+            ||             | |       |
             +-+-+-+-+-+-+-+-+-+-+-+-+-+
     42      |0|0|0|0|0|0|0|0|T|E|S|T|█|
             +-+-+-+-+-+-+-+-+-+-+-+-+-+
