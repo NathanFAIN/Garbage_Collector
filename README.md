@@ -40,9 +40,6 @@ With the particularity of having the attributes `__attribute__ ((destructor))` c
 
 Graphically explanation:
 ```
-
-
-
     0       The first allocation points to nothing (NULL / 0)
             ↑
             |
