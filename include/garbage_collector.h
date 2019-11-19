@@ -8,9 +8,7 @@
 #ifndef GARBAGE_COLLECTOR_H_
 #define GARBAGE_COLLECTOR_H_
 
-#include <unistd.h>
 #include <stdlib.h>
-#include <stdio.h>
 
 #define MALLOC(SIZE)    gc_alloc_ptr_list(SIZE)
 
