@@ -9,26 +9,27 @@ The function `gc_alloc_ptr_list` avoids to alloc the pointer with the desired si
 
 Let's say I want to allocate a char * for 5 characters (word "test\0")
 ```
-|
+ Memory allocated for user
+ |
+ |
+ ↓
 +-+-+-+-+-+
 |T|E|S|T|█|
 +-+-+-+-+-+
-|
 ```
 Well, in reality I'm going to allocate `5 + sizeof (void *)`, to get that:
 ```
                  Memory allocated for user
                  |
                  |
-                |↓
+                 ↓
 +-+-+-+-+-+-+-+-+-+-+-+-+-+
 | | | | | | | | |T|E|S|T|█|
 +-+-+-+-+-+-+-+-+-+-+-+-+-+
- ↑              |
+ ↑
  |
  |
  Previous pointer address
-
 ```
 The first 8 bytes will be used to store the previous allocated address I assign with the same function -> linked list!
 
