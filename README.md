@@ -27,10 +27,10 @@ Well, in reality I'm going to allocate `5 + sizeof (void *)`, to get that:
  ↑              |
  |
  |
- Next pointer address
+ Previous pointer address
 
 ```
-The first 8 bytes will be used to store the next allocated address I assign with the same function -> linked list!
+The first 8 bytes will be used to store the previous allocated address I assign with the same function -> linked list!
 
 With the particularity of having the attributes `__attribute__ ((destructor))` causes the function to be called automatically after execution enters `main()`. All stored pointers in the list are `free` at the end of the program.
 
@@ -44,7 +44,7 @@ Graphically explanation:
             ↑
             |
             |
-            |       Memory allocated in addition by the GC to store the address of the next allocation
+            |       Memory allocated in addition by the GC to store the address of the previous allocation
             |       |            Allocated memory requested by the user
             |       |            |
             |+-------------+ +-------+
@@ -55,7 +55,7 @@ Graphically explanation:
             ↑                ↑
             |                Address given to the user (42 + 8)
             |
-            |       Memory allocated in addition by the GC to store the address of the next allocation
+            |       Memory allocated in addition by the GC to store the address of the previous allocation
             |       |           Allocated memory requested by the user
             |       |           |
             |+-------------+ +-----+
@@ -66,7 +66,7 @@ Graphically explanation:
             ↑                ↑
             |                Address given to the user (113 + 8)
             |
-            |       Memory allocated in addition by the GC to store the address of the next allocation
+            |       Memory allocated in addition by the GC to store the address of the previous allocation
             |       |                 Allocated memory requested by the user
             |       |                 |
             |+-------------+ +---------------+
