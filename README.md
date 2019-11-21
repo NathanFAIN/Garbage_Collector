@@ -1,6 +1,6 @@
 # C-Garbage Collector
 
-A simple Garbage Collector in C ...
+A simple Garbage Collector in C.
 
 
 The function `gc_get_ptr_list()` avoids a global variable...
@@ -84,6 +84,8 @@ Graphically explanation:
 
 [gcc-attibutes]: https://gcc.gnu.org/onlinedocs/gcc/Common-Function-Attributes.html#Common-Function-Attributes
 [garbage-collector]: https://en.wikipedia.org/wiki/Garbage_collection_(computer_science)
+[linked-list]: https://www.geeksforgeeks.org/data-structures/linked-list/
 
 * **[GCC Attibutes][gcc-attibutes]**
 * **[Garbage Collector][garbage-collector]**
+* **[Linked List][linked-list]**
